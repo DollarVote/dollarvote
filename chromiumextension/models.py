@@ -24,3 +24,7 @@ class Donation(models.Models):
     company = models.ForeignKey(Company, on_delete=models.CASCADE)
     candidate = models.ForeignKey(Candidate, on_delete=models.CASCADE)
     amount = models.BigIntegerField()
+
+class Issue(models.Models):
+    "All issues we currently store data for"
+    name = models.CharField(max_length=256)

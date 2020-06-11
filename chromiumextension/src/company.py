@@ -1,3 +1,5 @@
+from politics.models import Company
+
 class Company:
 
     def __init__(self, name):
