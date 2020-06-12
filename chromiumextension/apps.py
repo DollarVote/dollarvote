@@ -1,5 +1,5 @@
 from django.apps import AppConfig
 
 
-class PoliticsConfig(AppConfig):
-    name = 'politics'
+class ChromiumextensionConfig(AppConfig):
+    name = 'chromiumextension'

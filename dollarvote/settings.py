@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'chromiumextension.apps.ChromiumextensionConfig'
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -82,8 +83,12 @@ WSGI_APPLICATION = 'dollarvote.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': '<db_name>',
+        'USER': '<db_username>',
+        'PASSWORD': '<password>',
+        'HOST': '<db_hostname_or_ip>',
+        'PORT': '<db_port>'
     }
 }
 
