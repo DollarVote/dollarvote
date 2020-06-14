@@ -7,8 +7,9 @@ stance_map = {"Yes": 1.0, "No": -1.0}
 def calculate_impact(company):
     """TODO: Add alternate ways to calculate impact."""
     "Calculates the impact that company donations have on the issue in question."
-    donation_impact = calculate_donation(company)
-
+    donation_impact = Impact.objects.filter(company=company).first()
+    if donation_impact is None:
+        donation_impact = calculate_donation(company)
     return donation_impact
 
 
@@ -31,4 +32,10 @@ def calculate_donation(company):
 
     for issue in Issues.all_issues:
         issue_weights[issue] = issue_weights[issue] / donation_total[issue]
-    return issue_weights
+
+    donation_impact = Impact(company=company,
+                             blm=issue_weights[Issues.issue1],
+                             climate=issue_weights[Issues.issue2],
+                             healthcare=issue_weights[Issues.issue3])
+    donation_impact.save()
+    return donation_impact

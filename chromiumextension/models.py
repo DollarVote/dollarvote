@@ -16,7 +16,7 @@ class Stance(models.Model):
 
 class Company(models.Model):
     """Company and its donations to political candidates"""
-    name = models.CharField(max_legnth=128)
+    name = models.CharField(max_length=128)
 
 
 class Donation(models.Model):
@@ -37,4 +37,6 @@ class Impact(models.Model):
     company = models.ForeignKey(Company, on_delete=models.CASCADE)
     # issue = models.ForeignKey(Issue, on_delete=models.CASCADE)
     issue = models.CharField(max_length=128)
-    score = models.FloatField()
+    blm = models.FloatField()
+    climate = models.FloatField()
+    healthcare = models.FloatField()
