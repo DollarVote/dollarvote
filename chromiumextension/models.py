@@ -37,6 +37,4 @@ class Impact(models.Model):
     company = models.ForeignKey(Company, on_delete=models.CASCADE)
     # issue = models.ForeignKey(Issue, on_delete=models.CASCADE)
     issue = models.CharField(max_length=128)
-    blm = models.FloatField()
-    climate = models.FloatField()
-    healthcare = models.FloatField()
+    score = models.FloatField()

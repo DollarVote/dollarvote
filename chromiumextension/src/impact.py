@@ -5,37 +5,51 @@ stance_map = {"Yes": 1.0, "No": -1.0}
 
 
 def calculate_impact(company):
-    """TODO: Add alternate ways to calculate impact."""
+    """TODO:
+        1.Add alternate ways to calculate impact.
+        2.Only lookup issues specific to the user."""
     "Calculates the impact that company donations have on the issue in question."
-    donation_impact = Impact.objects.filter(company=company).first()
-    if donation_impact is None:
-        donation_impact = calculate_donation(company)
+    found_impact = {}
+    user_issues = Issues.all_issues
+    remaining_issues = set(user_issues)
+
+    relevant_impact = Impact.objects.filter(company=company, issue__in=user_issues)
+    for impact in relevant_impact:
+        found_impact[impact.issue] = impact.score
+        remaining_issues.discard(impact.issue)
+
+    remaining_impact = {}
+    if remaining_issues:
+        remaining_impact = calculate_donation(company, remaining_issues)
+
+    donation_impact = {}
+    donation_impact.update(found_impact)
+    donation_impact.update(remaining_impact)
+
     return donation_impact
 
 
-def calculate_donation(company):
+def calculate_donation(company, issues):
     """TODO: This function might need to be heavily modified"""
     issue_weights = {}
     donation_total = {}
-    for issue in Issues.all_issues:
+    for issue in issues:
         issue_weights[issue] = 0
         donation_total[issue] = 0
 
     all_donations = Donation.objects.filter(company__name=company)
     for donation in all_donations:
-        donation_total += donation.amount
         candidate = donation.candidate
-        stances = Stance.objects.filter(candidate__id=candidate.id)
+        stances = Stance.objects.filter(candidate__id=candidate.id, issue__in=issues)
         for stance in stances:
             issue_weights[stance.issue] += donation.amount * stance_map[stance.stance]
             donation_total[stance.issue] += donation.amount
 
-    for issue in Issues.all_issues:
-        issue_weights[issue] = issue_weights[issue] / donation_total[issue]
+    issues_impact = {}
+    for issue in issues:
+        score = issue_weights[issue] / donation_total[issue]
+        donation_impact = Impact(company=company, issue=issue, score=score)
+        donation_impact.save()
+        issues_impact[issue] = score
 
-    donation_impact = Impact(company=company,
-                             blm=issue_weights[Issues.issue1],
-                             climate=issue_weights[Issues.issue2],
-                             healthcare=issue_weights[Issues.issue3])
-    donation_impact.save()
-    return donation_impact
+    return issues_impact
