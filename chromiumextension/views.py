@@ -3,6 +3,7 @@ from django.http import HttpResponse
 import json
 from django.http import JsonResponse
 from django.views import View
+from django.core import serializers
 from chromiumextension.src.impact import calculate_impact
 
 # Create your views here.
@@ -12,9 +13,6 @@ class ChromiumExtension(View):
 
     def get(self, request):
         company = request.GET['company']
-        # print("Received company: " + company)
-        # print(request.GET)
-        # return HttpResponse()
         response_data = calculate_impact(company)
         print(response_data)
         print(response_data.company)
@@ -22,6 +20,6 @@ class ChromiumExtension(View):
         print(response_data.blm)
         print(response_data.climate)
         print(response_data.healthcare)
-        return HttpResponse()
-        # response = JsonResponse(response_data)
-        # return response
+        serialized_response_data = serializers.serialize('json', [ response_data, ])
+        response = JsonResponse(serialized_response_data, safe=False)
+        return response
