@@ -11,8 +11,17 @@ from chromiumextension.src.impact import calculate_impact
 class ChromiumExtension(View):
 
     def get(self, request):
-        company = str(request.body)
-        print("Received company: " + company)
+        company = request.GET['company']
+        # print("Received company: " + company)
+        # print(request.GET)
+        # return HttpResponse()
         response_data = calculate_impact(company)
-        response = JsonResponse(response_data)
-        return response
+        print(response_data)
+        print(response_data.company)
+        print(response_data.issue)
+        print(response_data.blm)
+        print(response_data.climate)
+        print(response_data.healthcare)
+        return HttpResponse()
+        # response = JsonResponse(response_data)
+        # return response
