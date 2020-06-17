@@ -1,7 +1,5 @@
-from chromiumextension.models import Donation, Stance, Impact
+from chromiumextension.models import Donation, Stance, Impact, Company
 from chromiumextension.constants import Issues, ImpactChannel
-
-stance_map = {"Yes": 1.0, "No": -1.0}
 
 
 class ImpactFactor:
@@ -80,18 +78,21 @@ class ImpactFactor:
             issue_weights[issue] = 0
             donation_total[issue] = 0
 
-        all_donations = Donation.objects.filter(company__name=self.company)
+        all_donations = Donation.objects.filter(company_id=self.company)
         for donation in all_donations:
             candidate = donation.candidate
             stances = Stance.objects.filter(candidate__id=candidate.id, issue__in=issues)
             for stance in stances:
-                issue_weights[stance.issue] += donation.amount * stance_map[stance.stance]
+                issue_weights[stance.issue] += donation.amount * stance.stance
                 donation_total[stance.issue] += donation.amount
 
         issues_impact = {}
         for issue in issues:
-            score = issue_weights[issue] / donation_total[issue]
-            donation = Impact(company=self.company, channel=ImpactChannel.donation, issue=issue, score=score)
+            if donation_total[issue] == 0:
+                score = 0
+            else:
+                score = issue_weights[issue] / donation_total[issue]
+            donation = Impact(company_id=self.company, channel=ImpactChannel.donation, issue=issue, score=score)
             donation.save()
             issues_impact[issue] = score
 
