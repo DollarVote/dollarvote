@@ -91,7 +91,7 @@ class ImpactFactor:
         issues_impact = {}
         for issue in issues:
             score = issue_weights[issue] / donation_total[issue]
-            donation = Impact(company=self.company, channel=ImpactChannel.donation,issue=issue, score=score)
+            donation = Impact(company=self.company, channel=ImpactChannel.donation, issue=issue, score=score)
             donation.save()
             issues_impact[issue] = score
 

@@ -37,5 +37,5 @@ class Impact(models.Model):
     company = models.ForeignKey(Company, on_delete=models.CASCADE)
     # issue = models.ForeignKey(Issue, on_delete=models.CASCADE)
     issue = models.CharField(max_length=16)
-    channel = models.CharField(max_length=16)
-    score = models.FloatField()
+    channel = models.CharField(max_length=16, default="No Type")
+    score = models.FloatField(default=0.0)
