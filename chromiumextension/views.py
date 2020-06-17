@@ -1,14 +1,14 @@
 from django.http import JsonResponse
 from django.views import View
 from django.core import serializers
-from chromiumextension.src.impact import calculate_impact
+from chromiumextension.src.impact import donation_impact
 
 
 class ChromiumExtension(View):
 
     def get(self, request):
         company = request.GET['company']
-        response_data = calculate_impact(company)
+        response_data = donation_impact(company)
         print(response_data)
         print(response_data.company)
         print(response_data.issue)
