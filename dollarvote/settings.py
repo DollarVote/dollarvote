@@ -82,16 +82,18 @@ WSGI_APPLICATION = 'dollarvote.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': os.environ.get('db_name'),
-        'USER': os.environ.get('db_username'),
-        'PASSWORD': os.environ.get('password'),
-        'HOST': os.environ.get('db_hostname_or_ip'),
-        'PORT': os.environ.get('db_port')
-    }
-}
+DATABASES = {}
+if os.environ.get("ENVIRONMENT") == "testing":
+    DATABASES['default'] = {"ENGINE": 'django.db.backends.postgresql_psycopg2',
+                            "NAME": os.environ.get('db_name'),
+                            "USER": os.environ.get('db_username'),
+                            "PASSWORD": os.environ.get('password'),
+                            "HOST": os.environ.get('db_hostname_or_ip'),
+                            "PORT": os.environ.get('db_port')}
+else:
+    import dj_database_url
+    DATABASES['default'] = dj_database_url.config(conn_max_age=600, ssl_require=True)
+
 
 
 # Password validation
@@ -133,6 +135,3 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 django_heroku.settings(locals())
-
-import dj_database_url
-DATABASES['default'] = dj_database_url.config(conn_max_age=600, ssl_require=True)
