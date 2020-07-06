@@ -17,6 +17,8 @@ class Stance(models.Model):
 class Company(models.Model):
     """Company and its donations to political candidates"""
     name = models.CharField(max_length=128)
+    opensecrets_id = models.CharField(max_length=16)
+    parent_company = models.ForeignKey("self", on_delete=models.DO_NOTHING)
 
 
 class Donation(models.Model):
