@@ -1,0 +1,77 @@
+@import url('https://fonts.googleapis.com/css2?family=Eczar:wght@400;600;700&display=swap');
+
+p {
+    font-family: 'poppins', serif;
+    font-size: 14px;
+    font-weight: 400;
+    margin-top: 50;
+}
+
+h1, h2, h3 {
+    font-family: 'poppins', serif;
+
+}
+.bookmark {
+    background-color: #CD5338;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    padding: 10px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 60%;
+    margin-top: -20px;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.15);
+
+}
+
+.buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    margin-top: 20px;
+}
+
+.slab-button {
+    padding: 5px;
+    text-align: center;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.10);
+    width: 100px;
+    margin-bottom: 20px;
+    /* border: 2px solid; */
+    border-color: black;
+}
+
+.left {
+    background-color: #F8A000;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+
+.left:hover {
+    background-color: #FF6464;
+    transition: 0.5s ease;
+}
+
+.right {
+    background-color: #F8A000;
+    border-radius: 5px;
+}
+
+.right:hover {
+    background-color: rgb(255, 255, 255);
+    transition: 0.5s ease;
+}
+
+.link {
+    color: white;
+    font-family: 'Poppins', serif;
+    font-weight: 500;
+    text-decoration: none;
+}
+
+.link:hover {
+    color: black;
+    text-decoration: none;
+}

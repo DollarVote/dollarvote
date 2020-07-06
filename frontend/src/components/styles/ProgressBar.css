@@ -1,0 +1,17 @@
+.progress-div {
+    background-color: rgba(196, 46, 4, 0.8);
+    border-radius: .5rem;
+}
+
+.progress {
+    background-color: rgba(86, 176, 56);
+    height: 12px;
+    border-radius: 1rem;
+    transition: 0.5s ease;
+    transition-delay: 0.2s;
+  }
+
+.progress-bar {
+    margin-bottom: 10px;
+    background-color: white;
+}

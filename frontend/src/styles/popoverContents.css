@@ -1,0 +1,83 @@
+@import url('https://fonts.googleapis.com/css2?family=Eczar:wght@400;600;700&display=swap');
+
+.companyName {
+    font-family: 'Lora', serif;
+    font-weight: 700;
+    margin-top: 50;
+    color: #172B4D;
+    font-size: 1.5rem;
+}
+
+.companyScore {
+    font-family: 'Lora', serif;
+    font-weight: 700;
+    font-size: 2rem;
+    color: rgba(86, 176, 56);
+}
+
+.category {
+    margin: 0px;
+    margin-bottom: 5px;
+}
+
+.descriptionPoints {
+    padding-top: 50;
+}
+
+.divider {
+    background-color: #172B4D;
+    color: #172B4D;
+    height: 1px;
+    width: 100%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.progressBar {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.card {
+    minWidth: 275,
+}
+
+.politicalTitle {
+    fontSize: 18;
+}
+
+typography {
+    fontSize: 20;
+    font-family: "Cooper Black";
+}
+
+.pos {
+    marginBottom: 12;
+}
+
+.politicalCard {
+    /*width: 450px;*/
+    /*height: 450px;*/
+}
+
+CardMedia {
+    height: 140px;
+}
+
+.center-div
+{
+    margin: 0 auto;
+    width: 100px;
+}
+
+img {
+    height: 275px;
+    width: 275px;
+}
+
+.complete {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    justify-content: center;
+}
