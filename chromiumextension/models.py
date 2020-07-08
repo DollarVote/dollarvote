@@ -3,8 +3,9 @@ from django.db import models
 
 class Candidate(models.Model):
     """Class that specifies a political Candidate"""
-    id = models.CharField(max_length=128, primary_key=True)
-    name = models.CharField(max_length=128)
+    opensecrets_id = models.CharField(max_length=16, null=False, primary_key=True)
+    first_name = models.CharField(max_length=128)
+    last_name = models.CharField(max_length=128)
 
 
 class Stance(models.Model):
@@ -16,8 +17,8 @@ class Stance(models.Model):
 
 class Company(models.Model):
     """Company and its donations to political candidates"""
+    opensecrets_id = models.CharField(max_length=16, null=False, primary_key=True)
     name = models.CharField(max_length=128, default="")
-    opensecrets_id = models.CharField(max_length=16, default="")
     parent_company = models.ForeignKey("self", on_delete=models.SET_NULL, null=True)
 
 
