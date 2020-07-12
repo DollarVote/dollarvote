@@ -90,9 +90,11 @@ if os.environ.get("ENVIRONMENT") == "testing":
                             "PASSWORD": os.environ.get('DB_PASSWORD'),
                             "HOST": os.environ.get('DB_HOSTNAME'),
                             "PORT": os.environ.get('DB_PORT')}
+    print(DATABASES)
 else:
     import dj_database_url
     DATABASES['default'] = dj_database_url.config(conn_max_age=600, ssl_require=True)
+    DATABASES['default']["NAME"] = os.environ.get('DB_NAME')
 
 
 
