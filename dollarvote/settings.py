@@ -91,10 +91,11 @@ if os.environ.get("ENVIRONMENT") == "testing":
                             "HOST": os.environ.get('DB_HOSTNAME'),
                             "PORT": os.environ.get('DB_PORT')}
     print(DATABASES)
-else:
+elif os.environ.get("ENVIRONMENT") == "production":
     import dj_database_url
-    DATABASES['default'] = dj_database_url.config(conn_max_age=600, ssl_require=True)
-    DATABASES['default']["NAME"] = os.environ.get('DB_NAME')
+    db_version = os.environ.get("DB_VERSION")
+    DATABASES['default'] = dj_database_url.config(default=os.environ.get(db_version),
+                                                  ssl_require=True)    
 
 
 
