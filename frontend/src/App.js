@@ -14,11 +14,12 @@ class App extends Component {
   render() {
     return (
       <div>
-        <div className="header">
-          <h1 className="title">Dollar Vote</h1>
-          <br></br>
-          <h3 className="subtitle">It’s time to incorporate activism and advocacy into our daily lives.</h3> 
-          <h3 className="subtitle-bold">Hold yourself accountable to your spending habits.</h3>
+        <div className="section header">
+          <div>
+            <h1 className="title">Dollar Vote</h1>
+            <br></br>
+            <h3 className="subtitle">It’s time to incorporate activism and advocacy into our daily lives. Hold yourself accountable to your spending habits.</h3>
+          </div>
         </div>
         <div className="main">
           <CompanyCard></CompanyCard>
@@ -30,10 +31,11 @@ class App extends Component {
 
             Public and freely accessible data such FEC, SEC, and USPTO filings offer insight into lobbying activity, how much top executives are paid, which companies own which brands, and more.</p>
             <a href="https://www.google.com" className="main-link">see how we calculate impact</a><br/>
-            <Button>Chrome Extension</Button>
+            <Button title="Chrome Extension"></Button>
           </div>
         </div>
-          <div className="impact-blurb">
+        <div className="section">
+          <div className="donation-blurb">
             <h3>Track your own impact and make donations part of your budget.</h3>
             <br></br>
             <p>
@@ -42,8 +44,9 @@ class App extends Component {
             This tool is meant to help us hold ourselves accountable to putting our money where our mouths are.
             </p>
             <a href="https://www.google.com" className="main-link">see how we calculate impact</a><br/>
-            <Button>Chrome Extension</Button>
+            <Button title="Get Started">Chrome Extension</Button>
           </div>
+        </div>
       </div>
     );
   }

@@ -13,8 +13,8 @@ class Button extends React.Component {
     render() {
         return(
             <div className="buttons">
-            <a href="https://www.google.com" className="link"><div className="slab-button left">sup</div></a>
-            <a href="https://www.google.com" className="link"><div className="slab-button right">up</div></a>
+            <a href="https://www.google.com" className="link"><div className="slab-button left">{this.props.title}</div></a>
+            {/* <a href="https://www.google.com" className="link"><div className="slab-button right">up</div></a> */}
             </div>
         )
     }

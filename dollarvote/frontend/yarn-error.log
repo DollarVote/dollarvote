@@ -1,0 +1,26 @@
+Arguments: 
+  /usr/local/bin/node /usr/local/Cellar/yarn/1.22.4/libexec/bin/yarn.js remove cra-template
+
+PATH: 
+  /Users/joelenelatief/.npm/_npx/91241/bin:/Users/joelenelatief/node_modules/.bin:/Users/joelenelatief/.rvm/gems/ruby-2.5.6/bin:/Users/joelenelatief/.rvm/gems/ruby-2.5.6@global/bin:/Users/joelenelatief/.rvm/rubies/ruby-2.5.6/bin:/usr/local/opt/ruby/bin:/Users/joelenelatief/.rbenv/shims:/Library/Frameworks/Python.framework/Versions/3.7/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/go/bin:/Users/joelenelatief/.rvm/gems/ruby-2.5.6/bin:/Users/joelenelatief/.rvm/gems/ruby-2.5.6@global/bin:/Users/joelenelatief/.rvm/rubies/ruby-2.5.6/bin:/usr/local/opt/ruby/bin:/opt/anaconda3/bin:/opt/anaconda3/condabin:/Users/joelenelatief/.rbenv/shims:/Library/Frameworks/Python.framework/Versions/3.7/bin:/Users/joelenelatief/.rvm/bin
+
+Yarn version: 
+  1.22.4
+
+Node version: 
+  10.16.3
+
+Platform: 
+  darwin x64
+
+Trace: 
+  Error: ENOENT: no such file or directory, copyfile '/Users/joelenelatief/Library/Caches/Yarn/v6/npm-@csstools-normalize-css-10.1.0-f0950bba18819512d42f7197e56c518aa491cf18-integrity/node_modules/@csstools/normalize.css/CHANGELOG.md' -> '/Users/joelenelatief/dollarvotefinal/dollarvote/dollarvote/frontend/node_modules/@csstools/normalize.css/CHANGELOG.md'
+
+npm manifest: 
+  No manifest
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
