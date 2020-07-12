@@ -36,7 +36,7 @@ class ImpactFactor:
         pledge = {}
         remaining_issues = set(self.issues)
 
-        relevant_impact = Impact.objects.filter(company=self.company,
+        relevant_impact = Impact.objects.filter(company=self.company.opensecrets_id,
                                                 channel=ImpactChannel.pledge,
                                                 issue__in=self.issues)
         for impact in relevant_impact:
@@ -53,7 +53,7 @@ class ImpactFactor:
         found_impact = {}
         remaining_issues = set(self.issues)
 
-        relevant_impact = Impact.objects.filter(company=self.company,
+        relevant_impact = Impact.objects.filter(company=self.company.opensecrets_id,
                                                 channel=ImpactChannel.donation,
                                                 issue__in=self.issues)
         for impact in relevant_impact:
@@ -78,10 +78,10 @@ class ImpactFactor:
             issue_weights[issue] = 0
             donation_total[issue] = 0
 
-        all_donations = Donation.objects.filter(company_id=self.company)
+        all_donations = Donation.objects.filter(company=self.company.opensecrets_id)
         for donation in all_donations:
             candidate = donation.candidate
-            stances = Stance.objects.filter(candidate__id=candidate.id, issue__in=issues)
+            stances = Stance.objects.filter(candidate=candidate, issue__in=issues)
             for stance in stances:
                 issue_weights[stance.issue] += donation.amount * stance.stance
                 donation_total[stance.issue] += donation.amount
@@ -92,7 +92,10 @@ class ImpactFactor:
                 score = 0
             else:
                 score = issue_weights[issue] / donation_total[issue]
-            donation = Impact(company_id=self.company, channel=ImpactChannel.donation, issue=issue, score=score)
+            donation = Impact(company=self.company.opensecrets_id,
+                              channel=ImpactChannel.donation,
+                              issue=issue,
+                              score=score)
             donation.save()
             issues_impact[issue] = score
 

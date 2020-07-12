@@ -10,7 +10,7 @@ class Candidate(models.Model):
 
 class Stance(models.Model):
     """Links political candidates to all their stances on issues"""
-    candidate = models.ForeignKey(Candidate, on_delete=models.CASCADE)
+    candidate = models.CharField(max_length=16, null=False)
     issue = models.CharField(max_length=16)
     stance = models.FloatField(default=0.0)
 
