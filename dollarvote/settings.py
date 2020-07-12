@@ -85,11 +85,11 @@ WSGI_APPLICATION = 'dollarvote.wsgi.application'
 DATABASES = {}
 if os.environ.get("ENVIRONMENT") == "testing":
     DATABASES['default'] = {"ENGINE": 'django.db.backends.postgresql_psycopg2',
-                            "NAME": os.environ.get('db_name'),
-                            "USER": os.environ.get('db_username'),
-                            "PASSWORD": os.environ.get('password'),
-                            "HOST": os.environ.get('db_hostname_or_ip'),
-                            "PORT": os.environ.get('db_port')}
+                            "NAME": os.environ.get('DB_NAME'),
+                            "USER": os.environ.get('DB_USERNAME'),
+                            "PASSWORD": os.environ.get('DB_PASSWORD'),
+                            "HOST": os.environ.get('DB_HOSTNAME'),
+                            "PORT": os.environ.get('DB_PORT')}
 else:
     import dj_database_url
     DATABASES['default'] = dj_database_url.config(conn_max_age=600, ssl_require=True)
