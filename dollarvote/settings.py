@@ -94,8 +94,7 @@ if os.environ.get("ENVIRONMENT") == "testing":
 elif os.environ.get("ENVIRONMENT") == "production":
     import dj_database_url
     db_version = os.environ.get("DB_VERSION")
-    DATABASES['default'] = dj_database_url.config(default=os.environ.get(db_version),
-                                                  ssl_require=True)
+    DATABASES['default'] = dj_database_url.config(default=os.environ.get(db_version), conn_max_age=600)
     print("DATABASE URL: " + os.environ.get(db_version))
 
 
