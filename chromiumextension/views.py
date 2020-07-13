@@ -10,7 +10,7 @@ class ChromiumExtension(View):
 
     def get(self, request):
         company_name = request.GET['company']
-        company = Company.objects.filter(name=company_name).first()
+        company = Company.objects.filter(name__contains=company_name).first()
         impact_factor = ImpactFactor(company)
         issue_impact = impact_factor.company_impact()
         for issue in issue_impact.keys():
