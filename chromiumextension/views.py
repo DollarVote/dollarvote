@@ -19,5 +19,6 @@ class ChromiumExtension(View):
         issue_impact = impact_factor.company_impact()
         for issue in issue_impact.keys():
             print(issue_impact, issue_impact[issue])
+        issue_impact["company"] = company.name
         data = json.dumps(issue_impact)
         return HttpResponse(data)
