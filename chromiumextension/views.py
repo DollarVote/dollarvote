@@ -11,6 +11,10 @@ class ChromiumExtension(View):
     def get(self, request):
         company_name = request.GET['company']
         company = Company.objects.filter(name__contains=company_name).first()
+        if company is None:
+            message = {"message": "Company Not Found"}
+            data = json.dumps(message)
+            return HttpResponse(data)
         impact_factor = ImpactFactor(company)
         issue_impact = impact_factor.company_impact()
         for issue in issue_impact.keys():
