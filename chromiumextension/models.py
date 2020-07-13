@@ -29,6 +29,11 @@ class Donation(models.Model):
     amount = models.BigIntegerField()
 
 
+class CompanyAttributes(models.Model):
+    company_opensecrets = models.CharField(max_length=16, null=False)
+    attribute = models.CharField(max_length=128, null=False)
+
+
 # class Issue(models.Model):
 #     """All issues for which we currently store data.
 #     Temporarily unimplemented because we are using hardcoded issues."""

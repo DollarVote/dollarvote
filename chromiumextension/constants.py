@@ -11,3 +11,10 @@ class ImpactChannel:
     donation = "donation"
     pledge = "pledge"
     all_channels = [donation, pledge]
+
+
+class Attributes:
+    blm = "Supports Black Lives Matter."
+    prison_labour = "Supports Prison Labour."
+    child_labour = "Support Child Labour."
+    abortion = "Supports anti-choice legislation."
